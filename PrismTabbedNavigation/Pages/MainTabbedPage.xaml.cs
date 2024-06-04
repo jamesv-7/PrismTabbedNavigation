@@ -125,11 +125,7 @@ public partial class MainTabbedPage : BottomBarPage, ITabbedPageView
                     await rootPage.NavigationService.GoBackToRootAsync(parameters);
                 else
                 {
-
-                    await rootPage.NavigationService.GoBackToRootAsync(parameters);
-                    Thread.Sleep(1000);
-                    var res = await rootPage.NavigationService.NavigateAsync(pageName, parameters);
-                    System.Diagnostics.Debug.WriteLine(res.ToString());
+                    await rootPage.NavigationService.NavigateAsync(pageName, parameters);
                 }
             }
         }
