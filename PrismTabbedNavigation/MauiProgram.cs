@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using System.Diagnostics;
+using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using PrismTabbedNavigation.Pages;
 
@@ -28,6 +29,41 @@ public static class MauiProgram
                     containerRegistry.RegisterForNavigation<ChestPage>();
                     containerRegistry.Register<IBasePageService, BasePageService>(); // Need to register this as per instance or else navigation won't work;
                     containerRegistry.RegisterForNavigation<SplashPage>();
+                })
+                .OnInitialized((IContainerProvider obj) =>
+                {
+
+                    Debug.WriteLine("MAUI BUILDER - OnInitialized IContainerRegistry");
+
+                    var eventAggregator = obj.Resolve<IEventAggregator>();
+                    eventAggregator?.GetEvent<NavigationRequestEvent>().Subscribe(context => {
+
+                        Debug.WriteLine("\nNAVIGATIONSERVICE");
+                        Debug.WriteLine("Uri = " + context.Uri);
+                        Debug.WriteLine("Parameters = " + context.Parameters);
+                        Debug.WriteLine("Type = " + context.Type);
+                        Debug.WriteLine("Cancelled = " + context.Cancelled);
+                        Debug.WriteLine("NAVIGATIONSERVICE RESULT");
+                        Debug.WriteLine("Success = " + context.Result.Success);
+                        Debug.WriteLine("Context = " + context.Result.Context);
+
+                        var exc = context.Result.Exception;
+                        if (exc != null)
+                        {
+                            Debug.WriteLine("NAVIGATIONSERVICE EXCEPTION");
+                            Debug.WriteLine("Exception = " + exc);
+                            Debug.WriteLine("Data = " + exc.Data);
+                            Debug.WriteLine("HelpLink = " + exc.HelpLink);
+                            Debug.WriteLine("HResult = " + exc.HResult);
+                            Debug.WriteLine("InnerException = " + exc.InnerException);
+                            Debug.WriteLine("Message = " + exc.Message);
+                            Debug.WriteLine("Source = " + exc.Source);
+                            Debug.WriteLine("StackTrace = " + exc.StackTrace);
+                            Debug.WriteLine("TargetSite = " + exc.TargetSite);
+                        }
+
+
+                    });
                 })
                 .AddGlobalNavigationObserver(context => context.Subscribe(x =>
                 {
