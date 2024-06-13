@@ -22,7 +22,7 @@ namespace PrismTabbedNavigation.ViewModels
         public async Task StartUp()
         {
             //await NavigationService.NavigateAsync($"/{MainTabbedPage}?createTab=NavigationPage|{"HomePage"}&createTab=NavigationPage|{"ChestPage"}&createTab=NavigationPage|{"ChestPage"}&createTab=NavigationPage|{"MoreMenuItemsPage"}&{KnownNavigationParameters.SelectedTab}={"HomePage"}");
-            NavigationService.CreateBuilder().UseRelativeNavigation()
+            NavigationService.CreateBuilder().UseAbsoluteNavigation()
                         .AddTabbedSegment(nameof(MainTabbedPage), b =>
                             b
                              .CreateTab(t => t.AddNavigationPage().AddSegment("HomePage"))

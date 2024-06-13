@@ -9,6 +9,5 @@
             Text="Chest page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Text="Navigate Tab Async" Command="{Binding LogInCommand}"></Button>
     </VerticalStackLayout>
 </prismmaui:BasePage>
