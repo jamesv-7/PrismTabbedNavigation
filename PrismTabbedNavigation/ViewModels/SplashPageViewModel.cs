@@ -21,8 +21,16 @@ namespace PrismTabbedNavigation.ViewModels
 
         public async Task StartUp()
         {
-            await NavigationService.NavigateAsync($"/{MainTabbedPage}?createTab=NavigationPage|{"HomePage"}&createTab=NavigationPage|{"ChestPage"}&createTab=NavigationPage|{"MoreMenuItemsPage"}&{KnownNavigationParameters.SelectedTab}={"HomePage"}");
-
+            //await NavigationService.NavigateAsync($"/{MainTabbedPage}?createTab=NavigationPage|{"HomePage"}&createTab=NavigationPage|{"ChestPage"}&createTab=NavigationPage|{"ChestPage"}&createTab=NavigationPage|{"MoreMenuItemsPage"}&{KnownNavigationParameters.SelectedTab}={"HomePage"}");
+            NavigationService.CreateBuilder().UseRelativeNavigation()
+                        .AddTabbedSegment(nameof(MainTabbedPage), b =>
+                            b
+                             .CreateTab(t => t.AddNavigationPage().AddSegment("HomePage"))
+                             .CreateTab(t => t.AddNavigationPage().AddSegment("ChestPage"))
+                             .CreateTab(t => t.AddNavigationPage().AddSegment("PricePage"))
+                             .CreateTab(t => t.AddNavigationPage().AddSegment("FoodPage"))
+                             .CreateTab(t => t.AddNavigationPage().AddSegment("MoreMenuItemsPage"))
+                             ).Navigate();
         }
     }
 }

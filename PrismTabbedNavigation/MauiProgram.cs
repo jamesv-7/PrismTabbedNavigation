@@ -23,6 +23,9 @@ public static class MauiProgram
                     containerRegistry.RegisterForNavigation<ChestPage>();
                     containerRegistry.RegisterForNavigation<MoreMenuItemsPage>();
                     containerRegistry.RegisterForNavigation<CreateAccountPage>();
+                    containerRegistry.RegisterForNavigation<FoodPage>();
+                    containerRegistry.RegisterForNavigation<PricePage>();
+                    containerRegistry.RegisterForNavigation<ChestPage>();
                     containerRegistry.Register<IBasePageService, BasePageService>(); // Need to register this as per instance or else navigation won't work;
                     containerRegistry.RegisterForNavigation<SplashPage>();
                 })

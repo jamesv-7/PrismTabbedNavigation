@@ -125,6 +125,7 @@ public partial class MainTabbedPage : BottomBarPage, ITabbedPageView
                     await rootPage.NavigationService.GoBackToRootAsync(parameters);
                 else
                 {
+                    Thread.Sleep(1000);
                     await rootPage.NavigationService.NavigateAsync(pageName, parameters);
                 }
             }

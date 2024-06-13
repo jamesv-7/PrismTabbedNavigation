@@ -3,14 +3,14 @@ using PrismTabbedNavigation.ViewModels;
 
 namespace PrismTabbedNavigation.Pages;
 
-public partial class ChestPage : BasePage, ITabRootPage
+public partial class FoodPage : BasePage, ITabRootPage
 {
 
-    public ChestPageViewModel ViewModel { get; private set; }
+    public FoodPageViewModel ViewModel { get; private set; }
 
     public INavigationService NavigationService => ViewModel.NavigationService;
 
-    public ChestPage(ChestPageViewModel viewModel)
+    public FoodPage(FoodPageViewModel viewModel)
     {
         InitializeComponent();
         ViewModel = viewModel;

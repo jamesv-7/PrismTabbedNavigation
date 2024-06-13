@@ -4,10 +4,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrismTabbedNavigation.Pages.HomePage"
              Title="Dashboard">
-    <VerticalStackLayout>
-        <Label 
-            Text="Home Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <prismmaui:BasePage.Content>
+        <VerticalStackLayout>
+            <Label 
+                Text="Home Page"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Button Text="Navigate Create Account" Command="{Binding NavigateCommand}"></Button>
+        </VerticalStackLayout>
+    </prismmaui:BasePage.Content>
 </prismmaui:BasePage>
